@@ -37,6 +37,26 @@ make sure the Anaconda base environment is active
 
 ## usage
 
+## command line app
+
+## web app 
+### Web App
+
+```sh
+# if we have the FLASK_APP=web_app env var in the ".env" file:
+flask run
+
+# Mac OS:
+FLASK_APP=web_app flask run
+
+# Windows OS:
+# ... if `export` doesn't work for you, try `set` instead
+# ... or set FLASK_APP variable via ".env" file
+export FLASK_APP=web_app
+flask run
+
+
+
 some commands here to run the files
 
 Run the example script
