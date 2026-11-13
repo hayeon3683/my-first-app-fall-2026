@@ -45,12 +45,12 @@ Run the example script
  python app/my_script.py
 
 # alternatively:
-python - m app.my_script
+python -m app.my_script
 
 ```sh
  python app/rps.py
 
- python - m app.rps
+ python -m app.rps
 
 
 
