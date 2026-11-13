@@ -31,7 +31,6 @@ conda activate rps-env
 pip install -r requirements.txt
 
 make sure the Anaconda base environment is active
->>>>>>> Stashed changes
 
 
 # can help future u, collaborators, AI agents
