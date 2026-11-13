@@ -53,6 +53,15 @@ python -m app.my_script
  python -m app.rps
 
 
+## Testing
+
+To run tests:
+
+```sh
+pytest
+```
+
+
 
 
 # maybe have to change the name as well
