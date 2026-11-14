@@ -1,4 +1,4 @@
-# 11-2class
+# my-first-app-fall-2026
 
 ## prerequisites
 
