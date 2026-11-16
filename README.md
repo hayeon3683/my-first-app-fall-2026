@@ -54,7 +54,7 @@ FLASK_APP=web_app flask run
 # ... or set FLASK_APP variable via ".env" file
 export FLASK_APP=web_app
 flask run
-
+```
 
 
 some commands here to run the files
