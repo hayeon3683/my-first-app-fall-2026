@@ -10,3 +10,7 @@ plotly
 
 # testing:
 pytest
+
+
+# production server
+gunicorn
