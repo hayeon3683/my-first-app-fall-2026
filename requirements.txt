@@ -1,11 +1,12 @@
-# will use pytest this to test our program
+# this is the "requirements.txt" file...
 
-python-dotenv
-# pandas 
-# plotly
-
-# web app
+# web app:
 flask
 
-# testing
+# stocks:
+pandas
+python-dotenv
+plotly
+
+# testing:
 pytest

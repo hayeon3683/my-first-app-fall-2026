@@ -2,74 +2,50 @@
 
 # organizational structure of our python file
 
-#1. imports at the top
-
+# 1. imports at the top
 import random
 
-#gloabl scope
+# 2. followed by any constants
+VALID_OPTIONS = ["rock", "paper", "scissors"]
 
-
-VALID_OPTIONS = ["rock", "paper", "scissors"] # 2. followed by any constants
-
-# 3. any functions or classes
-
+# 3. functions or classes
 def generate_random_choice():
     return random.choice(VALID_OPTIONS)
 
 
-def determine_winner(u, c): 
-
+def determine_winner(u, c):
     if u == "rock" and c == "rock":
-        return ("TIE GAME") # not just printing
+        return "TIE GAME"
     elif u == "rock" and c == "paper":
-        return ("COMPUTER WINS")
+        return "COMPUTER WINS"
     elif u == "rock" and c == "scissors":
-        return ("USER WINS")
+        return "USER WINS"
     elif u == "paper" and c == "rock":
-        return ("COMPUTER WINS") # OOPS
+        return "USER WINS"
     elif u == "paper" and c == "paper":
-        return ("TIE GAME")
+        return "TIE GAME"
     elif u == "paper" and c == "scissors":
-        return ("USER WINS") # OOPS
+        return "COMPUTER WINS"
     elif u == "scissors" and c == "rock":
-        return ("COMPUTER WINS")
+        return "COMPUTER WINS"
     elif u == "scissors" and c == "paper":
-        return ("USER WINS")
+        return "USER WINS"
     elif u == "scissors" and c == "scissors":
-        return ("TIE GAME")
+        return "TIE GAME"
 
 
 # 4. main conditional
-
-if __name__== "main":
-
-    #ONLY RUN THE CODE BELOW
-    # IF WE EXECUTE THIS FILE FROM THE COMMAND LINE
-    # BUT NOT IF WE IMPORT FROM THIS FILE
-
-    # ASK USER FOR AN INPUT (R/P/S)
-
+if __name__ == "__main__":
+    # only run the code below if we execute this file from the command line
     user_choice = input("Please choose one of 'rock', 'paper', or 'scissors': ")
     print("USER:", user_choice)
 
-    # VALIDATIONS
-
     if user_choice not in VALID_OPTIONS:
         print("OOPS INVALID INPUT, PLEASE TRY AGAIN")
-        # exit()
         quit()
 
-    # GENERATE RANDOM COMPUTER CHOICE
-
-    # computer_choice = random.choice(VALID_OPTIONS)
     computer_choice = generate_random_choice()
     print("COMP:", computer_choice)
 
-    # DETERMINE THE WINNER
-
     winner = determine_winner(u=user_choice, c=computer_choice)
     print(winner)
-
-    # quick alias to facilitate some copy and pasting
-    # we will soon move this into a function anyway
-   

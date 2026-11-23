@@ -1,4 +1,4 @@
-# 11-2class
+# my-first-app-fall-2026
 
 ## prerequisites
 
@@ -6,40 +6,68 @@ Install python version 3.x (i.e. using Anaconda)
 
 ## setup
 
-some instructions here
-
-1. clone [the repo](https://github.com/hayeon3683/11-2class) from GitHub, and put it somewhere like your Desktop
-2. navigate to the local repo from the command line (e.g., if on your desktop):
+1. Clone [the repo](https://github.com/hayeon3683/my-first-app-fall-2026) from GitHub, and put it somewhere like your Desktop.
+2. Navigate to the local repo from the command line:
 
 ```sh
-cd ~/Desktop/mt-first-app-fall-2026
+cd ~/Desktop/my-first-app-fall-2026
 ```
-3. create a new anaconda virtual environment called "rps-env" first time only:
+
+3. Create a new anaconda virtual environment called "rps-env" (first time only):
 
 ```sh
 conda create -n rps-env python=3.11
 ```
 
-4. activate the virtual environment as ncessary every time come back to the project
+4. Activate the virtual environment:
 
 ```sh
 conda activate rps-env
+```
 
-5. install packag dependencies:
+5. Install package dependencies:
 
 ```sh
 pip install -r requirements.txt
+```
 
-make sure the Anaconda base environment is active
+## Configuration
 
+The stocks functionality requires an AlphaVantage API key. Obtain an AlphaVantage API Key (using the [form](https://www.alphavantage.co/support/#api-key) or shared by the prof).
 
-# can help future u, collaborators, AI agents
+Create a local ".env" file and store your environment variable in there:
 
-## usage
+```sh
+# this is the ".env" file...
 
-## command line app
+ALPHAVANTAGE_API_KEY="______________"
+```
 
-## web app 
+## Usage
+
+### Command Line App
+
+Run the example script:
+
+```sh
+python app/my_script.py
+
+# alternatively:
+python -m app.my_script
+```
+
+Rock-Paper-Scissors:
+
+```sh
+python -m app.rps
+```
+
+Stocks dashboard:
+
+```sh
+python -m app.stocks
+```
+
 ### Web App
 
 ```sh
@@ -56,31 +84,9 @@ export FLASK_APP=web_app
 flask run
 ```
 
+## Testing
 
-some commands here to run the files
-
-Run the example script
-
-```sh
- python app/my_script.py
-
-# alternatively:
-python - m app.my_script
-
-```sh
- python app/rps.py
-
- python - m app.rps
-
-
-
-
-# maybe have to change the name as well
-
-
-#Testing
-
-to run tests:
+To run tests:
 
 ```sh
 pytest

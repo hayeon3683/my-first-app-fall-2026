@@ -1,7 +1,5 @@
-# this is the "app/__intit__.py" file
+# this is the "app/__init__.py" file
 
-# it says there are some python programs in the app
-
+# it says there are some python programs in the app directory
 # and helps various files import from files in this directory
-
 # can be blank, just needs to exist
