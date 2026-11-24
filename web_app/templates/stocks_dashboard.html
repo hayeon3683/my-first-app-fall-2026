@@ -31,7 +31,7 @@
 {% block scripts %}
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script>
-    const prices = {{ data|tojson }}.slice().reverse();
+    const prices = JSON.parse('{{ data|tojson }}').reverse();
     Plotly.newPlot("chart-container", [{
         x: prices.map(row => row.timestamp),
         y: prices.map(row => row.adjusted_close),
