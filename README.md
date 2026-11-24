@@ -91,3 +91,12 @@ To run tests:
 ```sh
 pytest
 ```
+
+## Web App Attribution
+
+- The shared layout uses [Jinja template inheritance](https://jinja.palletsprojects.com/en/stable/templates/#template-inheritance) and a [Bootstrap 5 responsive navbar](https://getbootstrap.com/docs/5.3/components/navbar/). The plum color palette and page layouts were customized for Hayeon's Web Lab, using a [compass icon from Bootstrap Icons](https://icons.getbootstrap.com/icons/compass/).
+- The stock route uses [Flask message flashing](https://flask.palletsprojects.com/en/stable/patterns/flashing/) to show a message after redirecting users back to the stock form when a ticker is invalid or returns no price data. The shared layout shows the message as a [dismissible Bootstrap alert](https://getbootstrap.com/docs/5.3/components/alerts/). The dashboard uses [Plotly.js](https://plotly.com/javascript/line-charts/) for its interactive price chart.
+
+## AI Assistance
+
+I used [OpenAI ChatGPT](https://chatgpt.com/) to help implement the shared Bootstrap layout, customize the plum navbar and compass icon, improve stock lookup error messages, and add a daily price table to the stocks dashboard.

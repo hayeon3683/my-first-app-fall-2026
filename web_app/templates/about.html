@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
-
+{% set active_page = "about" %}
+{% block title %}About{% endblock %}
 {% block content %}
-
-    <h1>About Me</h1>
-
-    <p>This is a paragraph on the "about" page.</p>
-
+<section class="surface narrow">
+    <h1>About the Web Lab</h1>
+    <p class="mb-0">I built this Flask app for OPAN 3243 at Georgetown. It includes Rock Paper Scissors and a stocks dashboard powered by Alpha Vantage.</p>
+</section>
 {% endblock %}

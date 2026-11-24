@@ -1,0 +1,60 @@
+:root {
+    --plum: #422744;
+    --berry: #773f69;
+    --rose: #f3e4ee;
+    --paper: #faf7f3;
+    --ink: #2b2330;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, sans-serif;
+}
+
+.site-navbar { background: var(--plum); }
+.site-navbar .navbar-brand { font-weight: 650; }
+.site-navbar .nav-link { color: #efdae8; }
+.site-navbar .nav-link.active { color: #fff; text-decoration: underline; text-underline-offset: .35em; }
+.brand-icon { color: #f2b5d6; font-size: 1.4rem; }
+
+h1, h2 {
+    color: var(--plum);
+    font-family: Georgia, serif;
+    letter-spacing: -.025em;
+}
+
+.surface {
+    background: #fff;
+    border: 1px solid #e8dce4;
+    border-radius: 1.25rem;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.hero { background: var(--rose); }
+.narrow { max-width: 42rem; }
+.feature-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: .85rem;
+    background: var(--rose);
+    color: var(--plum);
+    font-size: 1.4rem;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--berry);
+    --bs-btn-border-color: var(--berry);
+    --bs-btn-hover-bg: var(--plum);
+    --bs-btn-hover-border-color: var(--plum);
+    --bs-btn-active-bg: var(--plum);
+    --bs-btn-active-border-color: var(--plum);
+    --bs-btn-focus-shadow-rgb: 119, 63, 105;
+}
+
+footer a { color: var(--berry); }
