@@ -1,6 +1,8 @@
 # this is the "web_app/routes/stocks_routes.py" file ...
 
-from flask import Blueprint, request, render_template, redirect, flash
+import re
+
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 
 from app.stocks import fetch_stocks_csv, format_usd
 
@@ -15,37 +17,35 @@ def stocks_form():
 
 @stocks_routes.route("/stocks/dashboard", methods=["GET", "POST"])
 def stocks_dashboard():
-    print("STOCKS DASHBOARD...")
-
-    if request.method == "POST":
-        # for data sent via POST request, form inputs are in request.form:
-        request_data = dict(request.form)
-        print("FORM DATA:", request_data)
-    else:
-        # for data sent via GET request, url params are in request.args
-        request_data = dict(request.args)
-        print("URL PARAMS:", request_data)
-
-    symbol = request_data.get("symbol") or "NFLX"
+    fields = request.form if request.method == "POST" else request.args
+    symbol = fields.get("symbol", "NFLX").strip().upper()
+    if not re.fullmatch(r"[A-Z0-9][A-Z0-9.-]{0,19}", symbol):
+        flash("Enter a valid ticker symbol, such as MSFT or BRK.B.", "danger")
+        return redirect(url_for("stocks_routes.stocks_form"))
 
     try:
-        df = fetch_stocks_csv(symbol=symbol)
-        latest_close_usd = format_usd(df.iloc[0]["adjusted_close"])
-        latest_date = df.iloc[0]["timestamp"]
-        data = df.to_dict("records")
+        prices = fetch_stocks_csv(symbol=symbol)
+    except (OSError, ValueError):
+        flash("Stock data is temporarily unavailable. Please try again shortly.", "danger")
+        return redirect(url_for("stocks_routes.stocks_form"))
 
-        flash("Fetched Real-time Market Data!", "success")
-        return render_template("stocks_dashboard.html",
-            symbol=symbol,
-            latest_close_usd=latest_close_usd,
-            latest_date=latest_date,
-            data=data
-        )
-    except Exception as err:
-        print('OOPS', err)
+    if prices.empty or not {"timestamp", "adjusted_close"}.issubset(prices.columns):
+        flash(f"No price data was returned for {symbol}. Check the ticker or try again later.", "danger")
+        return redirect(url_for("stocks_routes.stocks_form"))
 
-        flash("Market Data Error. Please check your symbol and try again!", "danger")
-        return redirect("/stocks/form")
+    prices = prices[["timestamp", "adjusted_close"]].dropna().sort_values("timestamp", ascending=False)
+    if prices.empty:
+        flash(f"No closing prices were found for {symbol}. Try another ticker.", "danger")
+        return redirect(url_for("stocks_routes.stocks_form"))
+
+    latest = prices.iloc[0]
+    return render_template(
+        "stocks_dashboard.html",
+        symbol=symbol,
+        latest_close_usd=format_usd(latest["adjusted_close"]),
+        latest_date=latest["timestamp"],
+        data=prices.to_dict("records"),
+    )
 
 
 #

@@ -1,9 +1,26 @@
 {% extends "layout.html" %}
-
+{% set active_page = "home" %}
 {% block content %}
-
-    <h1>Welcome Home</h1>
-
-    <p>This is a paragraph on the "home" page.</p>
-
+<section class="surface hero mb-4">
+    <h1 class="display-4 mb-3">Hayeon's Web Lab</h1>
+    <p class="lead mb-0">Play a quick round or explore a stock's daily closing prices.</p>
+</section>
+<div class="row g-4">
+    <div class="col-md-6">
+        <section class="surface h-100">
+            <i class="bi bi-controller feature-icon mb-3" aria-hidden="true"></i>
+            <h2>Rock Paper Scissors</h2>
+            <p>Pick a move and see how it fares against the computer.</p>
+            <a class="btn btn-primary" href="{{ url_for('rps_routes.form') }}">Play a round</a>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section class="surface h-100">
+            <i class="bi bi-graph-up feature-icon mb-3" aria-hidden="true"></i>
+            <h2>Stocks Dashboard</h2>
+            <p>Look up a ticker to see its price chart and daily data.</p>
+            <a class="btn btn-primary" href="{{ url_for('stocks_routes.stocks_form') }}">Look up a stock</a>
+        </section>
+    </div>
+</div>
 {% endblock %}

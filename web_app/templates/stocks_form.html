@@ -1,27 +1,15 @@
-{% extends "bootstrap_5_layout.html" %}
-{% set active_page = "stocks_form" %}
-
+{% extends "layout.html" %}
+{% set active_page = "stocks" %}
+{% block title %}Stocks{% endblock %}
 {% block content %}
-
-<h2>Stocks Form</h2>
-
-<p>Request some stock market data...</p>
-
-<form action="/stocks/dashboard" method="POST">
-
-    <label>Stock Symbol:</label>
-    <input type="text" name="symbol" placeholder="MSFT" value="MSFT">
-    <br>
-
-    <label>Risk Tolerance:</label>
-    <select name="risk_level">
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
-    </select>
-    <br>
-
-    <button class="btn btn-success">Submit</button>
-</form>
-
+<section class="surface narrow">
+    <i class="bi bi-graph-up feature-icon mb-3" aria-hidden="true"></i>
+    <h1>Look up a stock</h1>
+    <p>Enter a ticker to see its daily adjusted closing prices.</p>
+    <form action="{{ url_for('stocks_routes.stocks_dashboard') }}" method="post">
+        <label class="form-label fw-semibold" for="symbol">Ticker symbol</label>
+        <input class="form-control mb-3" id="symbol" name="symbol" placeholder="e.g., MSFT" maxlength="20" required>
+        <button class="btn btn-primary" type="submit">View dashboard</button>
+    </form>
+</section>
 {% endblock %}

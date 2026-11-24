@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
-
+{% set active_page = "rps" %}
+{% block title %}Game result{% endblock %}
 {% block content %}
-
-   <h1>Game Result</h1>
-    <p><b>User</b>: {{ user_choice.upper() }}</p>
-    <p><b>Computer</b>: {{ computer_choice.upper() }}</p>
-    <p><b>Outcome</b>: {{ outcome.upper() }}</p>
-
-    <a href="/rps/form">Play Again</a>
-
+<section class="surface narrow">
+    <h1>Game result</h1>
+    <p class="lead">{{ outcome|capitalize }}</p>
+    <dl class="row g-3 mb-4">
+        <div class="col-6"><dt>Your move</dt><dd>{{ user_choice|capitalize }}</dd></div>
+        <div class="col-6"><dt>Computer's move</dt><dd>{{ computer_choice|capitalize }}</dd></div>
+    </dl>
+    <a class="btn btn-primary" href="{{ url_for('rps_routes.form') }}">Play again</a>
+</section>
 {% endblock %}
